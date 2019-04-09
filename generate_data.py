@@ -46,5 +46,7 @@ def main():
 
     response = requests.post(url,json=payload,headers=header)
 
+    print(response)
+
 if __name__ == '__main__':
     main()
