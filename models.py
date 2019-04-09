@@ -7,6 +7,10 @@ class Student(db.Model):
     surname = db.Column(db.String())
     tests = db.relationship("TestResult", backref="student", lazy='dynamic')
 
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+
     def __repr__(self):
         return '<id {}>'.format(self.id)
 
@@ -23,8 +27,13 @@ class TestResult(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     test = db.Column(db.String())
     result = db.Column(db.Integer)
-    student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'))
+    student_id = db.Column(db.Integer, db.ForeignKey('students.id'))
     student = db.relationship('Student')
+
+    def __init__(self, test, result, student_id):
+        self.test = test
+        self.result = result
+        self.student_id = student_id
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
