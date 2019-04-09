@@ -16,5 +16,13 @@ from models import Student, TestResult
 def hello():
     return "hello world"
 
+@app.route("/data/persist",methods=['POST'])
+def persist_data_to_db():
+    jsonData = request.get_json()
+    if request.method == 'POST':
+    
+        return jsonify(success=True, data=jsonData)
+
+        
 if __name__ == '__main__':
     app.run()
