@@ -5,7 +5,7 @@ class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
     surname = db.Column(db.String())
-    tests = db.relationship("TestResult", backref="student", lazy='dynamic')
+    tests = db.relationship("TestResult", backref="student_tests", lazy='dynamic')
 
     def __init__(self, name, surname):
         self.name = name
